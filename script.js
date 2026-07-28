@@ -251,3 +251,27 @@ if (document.getElementById("welcome")) {
             "Welcome, " + username + " 👋";
     }
 }
+if (document.getElementById("orders")) {
+
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    let output = "";
+
+    orders.forEach(order => {
+
+        output += `
+            <div class="product">
+                <h3>Order Date: ${order.date}</h3>
+        `;
+
+        order.items.forEach(item => {
+            output += `
+                <p>${item.name} - ₹${item.price}</p>
+            `;
+        });
+
+        output += `<hr></div>`;
+    });
+
+    document.getElementById("orders").innerHTML = output;
+}
