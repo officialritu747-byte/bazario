@@ -234,3 +234,11 @@ function logout() {
     alert("Logged Out Successfully!");
     window.location.href = "login.html";
 }
+if (document.getElementById("welcome")) {
+    let username = localStorage.getItem("username");
+
+    if (username) {
+        document.getElementById("welcome").innerHTML =
+            "Welcome, " + username + " 👋";
+    }
+}
