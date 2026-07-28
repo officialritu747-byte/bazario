@@ -131,3 +131,17 @@ function searchProducts() {
         }
     });
 }
+function addToWishlist(name, price, image) {
+
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    wishlist.push({
+        name: name,
+        price: price,
+        image: image
+    });
+
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+    alert(name + " added to Wishlist!");
+}
