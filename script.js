@@ -62,3 +62,12 @@ function removeFromCart(index) {
 
     location.reload();
 }
+function placeOrder(event) {
+    event.preventDefault();
+
+    localStorage.removeItem("cart");
+
+    alert("Order Placed Successfully!");
+
+    window.location.href = "success.html";
+}
