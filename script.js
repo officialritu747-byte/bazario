@@ -192,7 +192,13 @@ function login() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
 
-    if (username === "admin" && password === "1234") {
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    let user = users.find(
+        u => u.username === username && u.password === password
+    );
+
+    if (user) {
 
         localStorage.setItem("loggedIn", "true");
 
