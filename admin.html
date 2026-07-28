@@ -13,7 +13,13 @@ if (document.getElementById("adminProducts")) {
         <img src="${product.image}" width="100">
         <h3>${product.name}</h3>
         <p>₹${product.price}</p>
+<button onclick="editProduct(${index})">
+    Edit
+</button>
 
+<button onclick="deleteProduct(${index})">
+    Delete
+</button>
         <button onclick="deleteProduct(${index})">
             Delete
         </button>
