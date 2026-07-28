@@ -14,11 +14,21 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let output = "";
 let total = 0;
 
-cart.forEach(item => {
-  output += `<p>${item.name} - $${item.price}</p>`;
+cart.forEach((item, index) => {
+  output += `
+    <p>
+      ${item.name} - $${item.price}
+      <button onclick="removeItem(${index})">Remove</button>
+    </p>
+  `;
   total += item.price;
 });
 
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  location.reload();
+}
 document.getElementById("cart-items").innerHTML = output;
 document.getElementById("total").innerHTML = "Total: $" + total.toFixed(2);
 </script>
