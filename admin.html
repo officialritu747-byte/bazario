@@ -9,7 +9,11 @@
 <h1>🛠️ Bazario Admin Panel</h1>
 
 <h2>Add Product</h2>
+<input type="text" id="name" placeholder="Product Name"><br><br>
 
+<input type="number" id="price" placeholder="Price"><br><br>
+
+<input type="text" id="image" placeholder="Image URL"><br><br>
 <input type="text" placeholder="Product Name"><br><br>
 
 <input type="number" placeholder="Price"><br><br>
@@ -17,12 +21,30 @@
 <input type="text" placeholder="Image URL"><br><br>
 
 <button>Add Product</button>
-
+<button onclick="addProduct()">Add Product</button>
 <hr>
 
 <h2>Products</h2>
 
 <p>No products added yet.</p>
+<script>
+function addProduct() {
+  let name = document.getElementById("name").value;
+  let price = document.getElementById("price").value;
+  let image = document.getElementById("image").value;
 
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+
+  products.push({
+    name: name,
+    price: price,
+    image: image
+  });
+
+  localStorage.setItem("products", JSON.stringify(products));
+
+  alert("Product Added Successfully!");
+}
+</script>
 </body>
 </html>
