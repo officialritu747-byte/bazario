@@ -87,7 +87,16 @@ function removeFromCart(index) {
 
     location.reload();
 }
-function placeOrder(event) {
+function placeOrder(event) {let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+orders.push({
+    date: new Date().toLocaleString(),
+    items: cart
+});
+
+localStorage.setItem("orders", JSON.stringify(orders));
     event.preventDefault();
 
     localStorage.removeItem("cart");
