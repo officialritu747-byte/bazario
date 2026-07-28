@@ -6,16 +6,20 @@
 </head>
 <body>
 <div id="cart-items"></div>
+<h2 id="total"></h2>
 
 <script>
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let output = "";
+let total = 0;
 
 cart.forEach(item => {
   output += `<p>${item.name} - $${item.price}</p>`;
+  total += item.price;
 });
 
 document.getElementById("cart-items").innerHTML = output;
+document.getElementById("total").innerHTML = "Total: $" + total.toFixed(2);
 </script>
 <h1 style="text-align:center;">🛒 Your Cart</h1>
 
