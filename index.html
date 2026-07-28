@@ -5,9 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bazario</title>
 <style><script>
-function addToCart(product){
-  alert(product + " added to cart!");
-}
+<div class="product-card">
+    <img src="https://picsum.photos/300/300?random=1" alt="Wireless Headphones">
+
+    <h3>Wireless Headphones</h3>
+
+    <p class="price">$49.99</p>
+
+    <button onclick="addToCart('Wireless Headphones',49.99)">
+        Add to Cart
+    </button>
+
+    <button onclick="buyNow('Wireless Headphones',49.99)">
+        Buy Now
+    </button>
+</div>
 </script>
 body{
 margin:0;
