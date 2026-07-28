@@ -19,7 +19,18 @@ background:#f5f5f5;
 <script>
 let cart = 0;
 <a href="admin.html">Admin</a>
-function addToCart(product){
+function addToCart(name, price) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  cart.push({
+    name: name,
+    price: price
+  });
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  alert("Product added to cart!");
+}
   cart++;
   document.getElementById("count").innerText = cart;
   alert(product + " added to cart!");
