@@ -71,3 +71,21 @@ function placeOrder(event) {
 
     window.location.href = "success.html";
 }
+function addProduct() {
+
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    let product = {
+        name: document.getElementById("productName").value,
+        price: document.getElementById("productPrice").value,
+        image: document.getElementById("productImage").value
+    };
+
+    products.push(product);
+
+    localStorage.setItem("products", JSON.stringify(products));
+
+    alert("Product Added!");
+
+    location.reload();
+}
