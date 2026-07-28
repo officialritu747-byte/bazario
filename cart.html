@@ -43,6 +43,32 @@ document.getElementById("total").innerHTML = "Total: $" + total.toFixed(2);
 <div style="text-align:center;">
   <button>Checkout</button>
 </div>
+<h1>🛒 My Cart</h1>
 
+<div id="cartItems"></div>
+<h1>🛒 My Cart</h1>
+
+<div id="cartItems"></div>
+
+<h2>Total: $<span id="total">0</span></h2>
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let output = "";
+let total = 0;
+
+cart.forEach(item => {
+  output += `
+    <div class="product">
+      <h3>${item.name}</h3>
+      <p>$${item.price}</p>
+    </div>
+  `;
+  total += Number(item.price);
+});
+
+document.getElementById("cartItems").innerHTML = output;
+document.getElementById("total").innerText = total;
+</script>
 </body>
 </html>
