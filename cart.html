@@ -5,7 +5,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="cart-items"></div>
 
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let output = "";
+
+cart.forEach(item => {
+  output += `<p>${item.name} - $${item.price}</p>`;
+});
+
+document.getElementById("cart-items").innerHTML = output;
+</script>
 <h1 style="text-align:center;">🛒 Your Cart</h1>
 
 <p style="text-align:center;">Your selected products will appear here.</p>
