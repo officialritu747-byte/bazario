@@ -41,3 +41,4 @@
     <option value="4">4 Stars</option>
     <option value="5">5 Stars</option>
 </select>
+<p>Rating: ${JSON.parse(localStorage.getItem("ratings") || "{}")[product.name] || "No Rating"} ⭐</p>
