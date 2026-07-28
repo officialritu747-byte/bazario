@@ -6,16 +6,20 @@ if (document.getElementById("adminProducts")) {
 
     let output = "";
 
-    products.forEach((product, index) => {
+    products products.forEach((product, index) => {
 
-        output += `
-        <div class="product">
-            <img src="${product.image}" width="100">
-            <h3>${product.name}</h3>
-            <p>₹${product.price}</p>
-        </div>
-        `;
-    });
+    output += `
+    <div class="product">
+        <img src="${product.image}" width="100">
+        <h3>${product.name}</h3>
+        <p>₹${product.price}</p>
+
+        <button onclick="deleteProduct(${index})">
+            Delete
+        </button>
+    </div>
+    `;
+});
 
     document.getElementById("adminProducts").innerHTML = output;
 }
