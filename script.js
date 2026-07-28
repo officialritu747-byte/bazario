@@ -35,16 +35,30 @@ if (document.getElementById("cartItems")) {
     let output = "";
     let total = 0;
 
-    cart.forEach(item => {
-        output += `
-            <div class="product">
-                <h3>${item.name}</h3>
-                <p>₹${item.price}</p>
-            </div>
-        `;
-        total += Number(item.price);
-    });
+    cart.forEach((item, index) => {
+    output += `
+        <div class="product">
+            <h3>${item.name}</h3>
+            <p>₹${item.price}</p>
+
+            <button onclick="removeFromCart(${index})">
+                Remove
+            </button>
+        </div>
+    `;
+
+    total += Number(item.price);
+});
 
     document.getElementById("cartItems").innerHTML = output;
     document.getElementById("total").innerHTML = "Total: ₹" + total;
+}
+function removeFromCart(index) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.splice(index, 1);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    location.reload();
 }
