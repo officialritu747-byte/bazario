@@ -229,3 +229,8 @@ function signup() {
 
     window.location.href = "login.html";
 }
+function logout() {
+    localStorage.removeItem("loggedIn");
+    alert("Logged Out Successfully!");
+    window.location.href = "login.html";
+}
