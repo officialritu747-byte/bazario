@@ -177,3 +177,13 @@ if (document.getElementById("wishlistItems")) {
 
     location.reload();
 }
+function rateProduct(name, rating) {
+
+    let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
+
+    ratings[name] = rating;
+
+    localStorage.setItem("ratings", JSON.stringify(ratings));
+
+    alert("Thanks! You rated " + name + " " + rating + " stars.");
+}
