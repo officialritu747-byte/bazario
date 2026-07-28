@@ -18,7 +18,17 @@ background:#f5f5f5;
   <a href="#">Categories</a>
   <a href="#">Cart</a>
   <a href="#">Login</a>
-</nav>
+</nav><script>
+<script>
+let cart = 0;
+
+function addToCart(product){
+  cart++;
+  document.getElementById("count").innerText = cart;
+  alert(product + " added to cart!");
+}
+</script>
+</script>
 header{
 background:#0d6efd;
 color:white;
