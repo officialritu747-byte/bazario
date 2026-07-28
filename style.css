@@ -96,3 +96,28 @@ nav a{
 nav a:hover{
     color:#ff9800;
 }
+.search-box{
+display:flex;
+justify-content:center;
+margin:15px;
+}
+
+.search-box input{
+width:70%;
+padding:10px;
+}
+
+.categories{
+display:flex;
+gap:10px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.categories button{
+padding:8px 15px;
+border-radius:20px;
+border:none;
+background:orange;
+color:white;
+}
