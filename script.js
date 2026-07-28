@@ -29,3 +29,22 @@ function addToCart(name, price) {
     localStorage.setItem("cart", JSON.stringify(cart));
     alert(name + " added to cart!");
 }
+if (document.getElementById("cartItems")) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let output = "";
+    let total = 0;
+
+    cart.forEach(item => {
+        output += `
+            <div class="product">
+                <h3>${item.name}</h3>
+                <p>₹${item.price}</p>
+            </div>
+        `;
+        total += Number(item.price);
+    });
+
+    document.getElementById("cartItems").innerHTML = output;
+    document.getElementById("total").innerHTML = "Total: ₹" + total;
+}
