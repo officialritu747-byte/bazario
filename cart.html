@@ -6,6 +6,7 @@
 </head>
 <body>
 <div id="cart-items"></div>
+<div id="cart-items"></div>
 <h2 id="total"></h2>
 
 <script>
@@ -17,6 +18,10 @@ cart.forEach(item => {
   output += `<p>${item.name} - $${item.price}</p>`;
   total += item.price;
 });
+
+document.getElementById("cart-items").innerHTML = output;
+document.getElementById("total").innerHTML = "Total: $" + total.toFixed(2);
+</script>
 
 document.getElementById("cart-items").innerHTML = output;
 document.getElementById("total").innerHTML = "Total: $" + total.toFixed(2);
