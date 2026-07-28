@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html><h2>Admin Panel</h2>
+if (document.getElementById("adminProducts")) {
 
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    let output = "";
+
+    products.forEach((product, index) => {
+
+        output += `
+        <div class="product">
+            <img src="${product.image}" width="100">
+            <h3>${product.name}</h3>
+            <p>₹${product.price}</p>
+        </div>
+        `;
+    });
+
+    document.getElementById("adminProducts").innerHTML = output;
+}
 <input type="text" id="productName" placeholder="Product Name"><br><br>
 
 <input type="number" id="productPrice" placeholder="Price"><br><br>
