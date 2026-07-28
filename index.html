@@ -133,7 +133,7 @@ Mega Sale 50% OFF
     </button>
   </div>
 
-  <div class="product">
+  <section class="products" id="products"></section>
     <img src="https://via.placeholder.com/150" alt="Smart Watch">
     <h3>Smart Watch</h3>
     <p>$79.99</p>
@@ -161,7 +161,26 @@ function addToCart(name, price) {
     name: name,
     price: price
   });
+<script>
+let products = JSON.parse(localStorage.getItem("products")) || [];
 
+let output = "";
+
+products.forEach(product => {
+  output += `
+    <div class="product">
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>$${product.price}</p>
+      <button onclick="addToCart('${product.name}', ${product.price})">
+        Add to Cart
+      </button>
+    </div>
+  `;
+});
+
+document.getElementById("products").innerHTML = output;
+</script>
   localStorage.setItem("cart", JSON.stringify(cart));
 
   alert(name + " added to cart!");
