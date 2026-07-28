@@ -145,3 +145,35 @@ function addToWishlist(name, price, image) {
 
     alert(name + " added to Wishlist!");
 }
+if (document.getElementById("wishlistItems")) {
+
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    let output = "";
+
+    wishlist.forEach((item, index) => {
+
+        output += `
+            <div class="product">
+                <img src="${item.image}" width="100">
+                <h3>${item.name}</h3>
+                <p>₹${item.price}</p>
+
+                <button onclick="removeWishlist(${index})">
+                    Remove
+                </button>
+            </div>
+        `;
+    });
+
+    document.getElementById("wishlistItems").innerHTML = output;
+}function removeWishlist(index) {
+
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    wishlist.splice(index, 1);
+
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+    location.reload();
+}
