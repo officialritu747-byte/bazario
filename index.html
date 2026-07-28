@@ -137,7 +137,9 @@ Mega Sale 50% OFF
     <img src="https://via.placeholder.com/150" alt="Smart Watch">
     <h3>Smart Watch</h3>
     <p>$79.99</p>
-    <button>Buy Now</button>
+    <button onclick="addToCart('Wireless Headphones',49.99)">
+  Add to Cart
+    </button>
   </div>
 
 </section>
@@ -151,3 +153,17 @@ Mega Sale 50% OFF
     background:#ff9800;
     color:white;
 }
+<script>
+function addToCart(name, price) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  cart.push({
+    name: name,
+    price: price
+  });
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  alert(name + " added to cart!");
+}
+</script>
