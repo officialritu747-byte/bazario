@@ -150,3 +150,33 @@ border:none;
 padding:10px;
 border-radius:5px;
 }
+.products{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+  padding:20px;
+}
+
+.product{
+  width:170px;
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+.product img{
+  width:100%;
+  border-radius:10px;
+}
+
+.product button{
+  background:#ff9800;
+  color:white;
+  border:none;
+  padding:10px;
+  border-radius:5px;
+  cursor:pointer;
+}
