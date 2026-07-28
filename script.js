@@ -9,7 +9,15 @@ function buyNow(name, price) {
     alert("Buying " + name + " - $" + price);
 }
 let cart = [];
+function deleteProduct(index) {
+    let products = JSON.parse(localStorage.getItem("products")) || [];
 
+    products.splice(index, 1);
+
+    localStorage.setItem("products", JSON.stringify(products));
+
+    location.reload();
+}
 function addToCart(name, price) {
     cart.push({ name, price });
     alert(name + " added to cart");
