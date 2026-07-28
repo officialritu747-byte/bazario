@@ -205,3 +205,21 @@ function login() {
         alert("Invalid Username or Password!");
     }
 }
+function signup() {
+
+    let username = document.getElementById("newUsername").value;
+    let password = document.getElementById("newPassword").value;
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    users.push({
+        username: username,
+        password: password
+    });
+
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Account Created Successfully!");
+
+    window.location.href = "login.html";
+}
