@@ -1,5 +1,22 @@
 let cart = [];
+function editProduct(index) {
+    let products = JSON.parse(localStorage.getItem("products")) || [];
 
+    let newName = prompt("Enter New Product Name", products[index].name);
+    let newPrice = prompt("Enter New Price", products[index].price);
+    let newImage = prompt("Enter New Image URL", products[index].image);
+
+    if (newName && newPrice && newImage) {
+        products[index].name = newName;
+        products[index].price = newPrice;
+        products[index].image = newImage;
+
+        localStorage.setItem("products", JSON.stringify(products));
+
+        alert("Product Updated Successfully!");
+        location.reload();
+    }
+}
 function addToCart(name, price) {
     cart.push({ name, price });
     alert(name + " added to cart");
