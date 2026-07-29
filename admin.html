@@ -1,92 +1,52 @@
 <!DOCTYPE html>
-<html><h2>Admin Panel</h2>
-if (document.getElementById("adminProducts")) {
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel - Bazario</title>
+<link rel="stylesheet" href="style.css">
+</head>
 
-    let products = JSON.parse(localStorage.getItem("products")) || [];
+<body>
 
-    let output = "";
+<header>
+<div class="logo">🛒 BAZARIO Admin</div>
 
-    products products.forEach((product, index) => {
+<nav>
+<a href="index.html">Home</a>
+<a href="products.html">Products</a>
+<a href="orders.html">Orders</a>
+<a href="admin.html">Admin</a>
+</nav>
+</header>
 
-    output += `
-    <div class="product">
-        <img src="${product.image}" width="100">
-        <h3>${product.name}</h3>
-        <p>₹${product.price}</p>
-<button onclick="editProduct(${index})">
-    Edit
+<div class="login-box">
+
+<h2>Admin Dashboard</h2>
+
+<input type="text" id="productName" placeholder="Product Name">
+
+<input type="number" id="productPrice" placeholder="Product Price">
+
+<input type="text" id="productImage" placeholder="Image URL">
+
+<button onclick="addProduct()">
+Add Product
 </button>
-
-<button onclick="deleteProduct(${index})">
-    Delete
-</button>
-        <button onclick="deleteProduct(${index})">
-            Delete
-        </button>
-    </div>
-    `;
-});
-
-    document.getElementById("adminProducts").innerHTML = output;
-}
-<input type="text" id="productName" placeholder="Product Name"><br><br>
-
-<input type="number" id="productPrice" placeholder="Price"><br><br>
-
-<input type="text" id="productImage" placeholder="Image URL"><br><br>
-
-<button onclick="addProduct()">Add Product</button>
 
 <hr>
+
+<h3>Products</h3>
 
 <div id="adminProducts"></div>
 
+</div>
+
+<footer>
+<p>© 2026 Bazario | Admin Panel</p>
+</footer>
+
 <script src="script.js"></script>
-<head>
-  <title>Admin Panel - Bazario</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-<h1>🛠️ Bazario Admin Panel</h1>
-
-<h2>Add Product</h2>
-<input type="text" id="name" placeholder="Product Name"><br><br>
-
-<input type="number" id="price" placeholder="Price"><br><br>
-
-<input type="text" id="image" placeholder="Image URL"><br><br>
-<input type="text" placeholder="Product Name"><br><br>
-
-<input type="number" placeholder="Price"><br><br>
-
-<input type="text" placeholder="Image URL"><br><br>
-
-<button>Add Product</button>
-<button onclick="addProduct()">Add Product</button>
-<hr>
-
-<h2>Products</h2>
-
-<p>No products added yet.</p>
-<script>
-function addProduct() {
-  let name = document.getElementById("name").value;
-  let price = document.getElementById("price").value;
-  let image = document.getElementById("image").value;
-
-  let products = JSON.parse(localStorage.getItem("products")) || [];
-
-  products.push({
-    name: name,
-    price: price,
-    image: image
-  });
-
-  localStorage.setItem("products", JSON.stringify(products));
-
-  alert("Product Added Successfully!");
-}
-</script>
 </body>
 </html>
