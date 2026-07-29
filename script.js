@@ -1,4 +1,28 @@
-let cart = [];<span id="cart-count">0</span><div class="cart">
+let cart = [];<span id="cart-count">0</span><div class="cart">const totalPrice = document.getElementById("total-price");
+<button id="checkout-btn">Checkout</button>
+function displayCart() {
+  cartItems.innerHTML = "";
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    total += item.price;
+
+    cartItems.innerHTML += `
+      <li>
+        ${item.name} - ₹${item.price}
+        <button onclick="removeFromCart(${index})">Remove</button>
+      </li>
+    `;
+  });
+
+  totalPrice.textContent = total;
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  updateCartCount();
+  displayCart();
+}
     <h2>Shopping Cart</h2>
     <ul id="cart-items"></ul>
 </div>
@@ -371,3 +395,17 @@ function removeFromCart(index) {
   updateCartCount();
   displayCart();
 }
+const checkoutBtn = document.getElementById("checkout-btn");
+
+checkoutBtn.addEventListener("click", () => {
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  alert("Order placed successfully! Thank you for shopping with Bazario.");
+
+  cart = [];
+  updateCartCount();
+  displayCart();
+});
