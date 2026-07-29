@@ -420,3 +420,35 @@ cursor:pointer;
 .sale-card button:hover{
 background:#131921;
 }
+.login-container{
+width:350px;
+margin:50px auto;
+background:#fff;
+padding:25px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+text-align:center;
+}
+
+.login-container input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+.login-container button{
+width:100%;
+padding:12px;
+background:#ff9900;
+color:white;
+border:none;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+}
+
+.login-container button:hover{
+background:#e68a00;
+}
