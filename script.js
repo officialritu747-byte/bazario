@@ -568,3 +568,32 @@ showAdminProducts();
 }
 
 showAdminProducts();
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+const db = getFirestore(app);
+
+async function loadFirebaseProducts() {
+  const productsBox = document.getElementById("products");
+  if (!productsBox) return;
+
+  productsBox.innerHTML = "";
+
+  const querySnapshot = await getDocs(collection(db, "products"));
+
+  querySnapshot.forEach((doc) => {
+    const item = doc.data();
+
+    productsBox.innerHTML += `
+      <div class="product">
+        <img src="${item.image}" alt="${item.name}">
+        <h3>${item.name}</h3>
+        <p>₹${item.price}</p>
+        <button onclick="addToCart('${item.name}', ${item.price})">
+          Add to Cart
+        </button>
+      </div>
+    `;
+  });
+}
+
+loadFirebaseProducts();
