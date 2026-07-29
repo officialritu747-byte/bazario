@@ -1,3 +1,36 @@
+import {
+  getFirestore,
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+const db = getFirestore();
+
+async function loadFirebaseProducts() {
+  const productsBox = document.getElementById("products");
+  if (!productsBox) return;
+
+  const snapshot = await getDocs(collection(db, "products"));
+
+  let output = "";
+
+  snapshot.forEach((doc) => {
+    const item = doc.data();
+
+    output += `
+      <div class="product">
+        <img src="${item.image}">
+        <h3>${item.name}</h3>
+        <p>₹${item.price}</p>
+        <button onclick="addToCart('${item.name}',${item.price})">Add to Cart</button>
+      </div>
+    `;
+  });
+
+  productsBox.innerHTML = output;
+}
+
+loadFirebaseProducts();
 // Add To Cart
 function addToCart(name, price) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
