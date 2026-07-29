@@ -445,3 +445,39 @@ checkoutBtn.addEventListener("click", () => {
 .hero-content button:hover{
     background:#e65c00;
 }
+.categories{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.category-container{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.category-card{
+    width:180px;
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.category-card:hover{
+    transform:translateY(-8px);
+}
+
+.category-card img{
+    width:100px;
+    height:100px;
+    object-fit:contain;
+}
+
+.category-card h3{
+    margin-top:15px;
+}
