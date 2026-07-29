@@ -346,3 +346,28 @@ function displayCart() {
     `;
   });
 }
+const totalPrice = document.getElementById("total-price");
+
+function displayCart() {
+  cartItems.innerHTML = "";
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    total += item.price;
+
+    cartItems.innerHTML += `
+      <li>
+        ${item.name} - ₹${item.price}
+        <button onclick="removeFromCart(${index})">Remove</button>
+      </li>
+    `;
+  });
+
+  totalPrice.textContent = total;
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  updateCartCount();
+  displayCart();
+}
