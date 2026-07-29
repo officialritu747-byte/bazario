@@ -10,29 +10,63 @@ body{
 }
 
 /* Header */
-header{
-  background:#222;
-  color:#fff;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 30px;
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 50px;
+background:#131921;
+color:white;
+position:sticky;
+top:0;
+z-index:999;
 }
 
 .logo{
-  font-size:28px;
-  font-weight:bold;
+font-size:28px;
+font-weight:bold;
+}
+
+.logo span{
+color:#ff9900;
+}
+
+nav{
+display:flex;
+gap:25px;
 }
 
 nav a{
-  color:#fff;
-  text-decoration:none;
-  margin-left:20px;
-  font-size:17px;
+text-decoration:none;
+color:white;
+font-size:18px;
+transition:.3s;
 }
 
 nav a:hover{
-  color:#ff9800;
+color:#ff9900;
+}
+
+.nav-icons{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.nav-icons input{
+padding:10px;
+width:220px;
+border:none;
+border-radius:5px;
+}
+
+.nav-icons button{
+padding:10px 15px;
+background:#ff9900;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
 }
 
 /* Hero */
