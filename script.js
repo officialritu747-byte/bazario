@@ -437,3 +437,33 @@ alert("Invalid Email or Password");
 }
 
 }
+function signupUser(){
+
+let name=document.getElementById("signupName").value;
+let email=document.getElementById("signupEmail").value;
+let password=document.getElementById("signupPassword").value;
+let confirm=document.getElementById("confirmPassword").value;
+
+if(name===""||email===""||password===""||confirm===""){
+alert("Please fill all fields");
+return;
+}
+
+if(password!==confirm){
+alert("Passwords do not match");
+return;
+}
+
+let user={
+name:name,
+email:email,
+password:password
+};
+
+localStorage.setItem("user",JSON.stringify(user));
+
+alert("Account Created Successfully!");
+
+window.location.href="login.html";
+
+}
