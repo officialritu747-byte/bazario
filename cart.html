@@ -3,39 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Cart - Bazario</title>
+<title>Cart - Bazario</title>
+
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
+<header class="header">
+
 <div class="logo">🛒 BAZARIO</div>
 
 <nav>
 <a href="index.html">Home</a>
 <a href="products.html">Products</a>
+<a href="wishlist.html">Wishlist</a>
 <a href="cart.html">Cart</a>
-<a href="login.html">Login</a>
 </nav>
+
 </header>
 
-<section style="padding:30px;">
+<section class="hero">
+<h1>My Cart</h1>
+<p>Your selected products</p>
+</section>
 
-<h1>🛒 My Shopping Cart</h1>
-
-<div id="cartItems"></div>
-
-<h2 id="totalPrice">Total: ₹0</h2>
-
-<br>
-
-<button onclick="checkout()">Checkout</button>
+<section class="products" id="cartItems">
 
 </section>
 
+<h2 style="text-align:center;margin:20px;">
+Total: ₹<span id="total">0</span>
+</h2>
+
+<div style="text-align:center;margin-bottom:30px;">
+<button onclick="checkout()">Proceed to Checkout</button>
+</div>
+
 <footer>
-<p>© 2026 Bazario | All Rights Reserved</p>
+<h3>BAZARIO</h3>
+<p>© 2026 Bazario. All Rights Reserved.</p>
 </footer>
 
 <script src="script.js"></script>
