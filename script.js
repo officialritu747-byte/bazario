@@ -1,4 +1,4 @@
-let cart = [];
+let cart = [];<span id="cart-count">0</span>
 function editProduct(index) {
     let products = JSON.parse(localStorage.getItem("products")) || [];
 
