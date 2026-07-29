@@ -390,3 +390,7 @@ footer{
 .footer-content p{
     margin:8px 0;
 }
+.categories button:hover{
+    background:#ff9800;
+    color:white;
+}
