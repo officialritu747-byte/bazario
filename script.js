@@ -604,3 +604,11 @@ async function loadFirebaseProducts() {
 }
 
 loadFirebaseProducts();
+async function loadProducts() {
+  const snapshot = await getDocs(collection(db, "products"));
+  snapshot.forEach((doc) => {
+    console.log(doc.data());
+  });
+}
+
+loadProducts();
