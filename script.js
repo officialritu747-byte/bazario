@@ -256,7 +256,10 @@ localStorage.setItem("products",JSON.stringify(products));
 
 alert("Product Added Successfully!");
 
-loadProducts();
+showAdminProducts();
+
+
+  
 
 }
 
@@ -297,9 +300,6 @@ products.splice(index,1);
 
 localStorage.setItem("products",JSON.stringify(products));
 
-loadProducts();
-
-}
 
 window.onload=loadProducts;
 // Product Search
