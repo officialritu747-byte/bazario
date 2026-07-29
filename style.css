@@ -30,37 +30,41 @@ font-weight:bold;
 .logo span{
 color:#ff9900;
 }
-
-nav{
+.hero{
+height:500px;
+background:linear-gradient(135deg,#ff6a00,#ee0979);
 display:flex;
-gap:25px;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
 }
 
-nav a{
+.hero-content h1{
+font-size:55px;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:22px;
+margin-bottom:30px;
+}
+
+.hero-btn{
+display:inline-block;
+padding:15px 35px;
+background:white;
+color:#ff6a00;
 text-decoration:none;
-color:white;
-font-size:18px;
+font-weight:bold;
+border-radius:8px;
 transition:.3s;
 }
 
-nav a:hover{
-color:#ff9900;
+.hero-btn:hover{
+background:#131921;
+color:white;
 }
-
-.nav-icons{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.nav-icons input{
-padding:10px;
-width:220px;
-border:none;
-border-radius:5px;
-}
-
-.nav-icons button{
 padding:10px 15px;
 background:#ff9900;
 border:none;
