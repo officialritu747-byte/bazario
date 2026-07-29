@@ -36,7 +36,21 @@ id="searchInput"
 placeholder="Search Products..."
 onkeyup="searchProducts()">
 </section>
+<div class="filter-bar">
+  <select id="categoryFilter" onchange="filterProducts()">
+    <option value="all">All Categories</option>
+    <div class="product" data-category="Electronics">
+    <option value="Fashion">Fashion</option>
+    <option value="Home">Home & Kitchen</option>
+    <option value="Sports">Sports</option>
+  </select>
 
+  <select id="sortPrice" onchange="sortProducts()">
+    <option value="">Sort by Price</option>
+    <option value="low">Low to High</option>
+    <option value="high">High to Low</option>
+  </select>
+<div class="product" data-category="Electronics">
 <section class="products" id="products">
 
 <div class="product">
@@ -50,7 +64,7 @@ Add to Cart
 <button onclick="addToWishlist('Wireless Headphones',1499)">
 ❤️ Wishlist
 </button>
-<div class="product">
+<div class="product" data-category="Sports">
 <img src="https://picsum.photos/200?2">
 <h3>Smart Watch</h3>
 <p>₹2499</p>
