@@ -634,3 +634,30 @@ async function addProduct() {
 
   loadFirebaseProducts();
 }
+function filterProducts() {
+  const category = document.getElementById("categoryFilter").value;
+  const products = document.querySelectorAll(".product");
+
+  products.forEach(product => {
+    if (category === "all" || product.dataset.category === category) {
+      product.style.display = "block";
+    } else {
+      product.style.display = "none";
+    }
+  });
+}
+
+function sortProducts() {
+  const container = document.getElementById("products");
+  const products = Array.from(container.querySelectorAll(".product"));
+  const order = document.getElementById("sortPrice").value;
+
+  products.sort((a, b) => {
+    const priceA = parseInt(a.querySelector("p").innerText.replace("₹", ""));
+    const priceB = parseInt(b.querySelector("p").innerText.replace("₹", ""));
+
+    return order === "low" ? priceA - priceB : priceB - priceA;
+  });
+
+  products.forEach(product => container.appendChild(product));
+}
