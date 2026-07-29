@@ -142,3 +142,25 @@ alert("Login Successful!");
 window.location.href="index.html";
 
 }
+function signup(){
+
+let name=document.getElementById("name").value;
+let email=document.getElementById("signupEmail").value;
+let password=document.getElementById("signupPassword").value;
+
+if(name===""||email===""||password===""){
+alert("Please fill all fields");
+return;
+}
+
+localStorage.setItem("user",JSON.stringify({
+name:name,
+email:email,
+password:password
+}));
+
+alert("Account Created Successfully!");
+
+window.location.href="login.html";
+
+}
