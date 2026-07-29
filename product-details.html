@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details - Bazario</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<div class="logo">🛒 BAZARIO</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="products.html">Products</a>
+<a href="cart.html">Cart</a>
+<a href="login.html">Login</a>
+</nav>
+</header>
+
+<div class="product-details" style="display:flex;gap:40px;padding:40px;flex-wrap:wrap;">
+
+<div>
+<img src="https://picsum.photos/450" alt="Product" style="width:350px;border-radius:10px;">
+</div>
+
+<div style="max-width:500px;">
+<h1>Wireless Headphones</h1>
+
+<h2 style="color:#ff6600;">₹1499</h2>
+
+<p>
+High-quality wireless headphones with deep bass,
+Bluetooth 5.3, 40-hour battery backup,
+noise cancellation and premium sound quality.
+</p>
+
+<br>
+
+<p>⭐⭐⭐⭐⭐ (4.8/5)</p>
+
+<br>
+
+<button onclick="addToCart('Wireless Headphones',1499)">
+Add To Cart
+</button>
+
+<button onclick="window.location.href='cart.html'">
+Buy Now
+</button>
+
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 Bazario | All Rights Reserved</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
