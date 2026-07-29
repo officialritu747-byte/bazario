@@ -467,3 +467,70 @@ alert("Account Created Successfully!");
 window.location.href="login.html";
 
 }
+function addProduct(){
+
+let name=document.getElementById("productName").value;
+let price=document.getElementById("productPrice").value;
+let image=document.getElementById("productImage").value;
+
+if(name===""||price===""||image===""){
+alert("Fill all fields");
+return;
+}
+
+let products=JSON.parse(localStorage.getItem("products"))||[];
+
+products.push({
+name:name,
+price:price,
+image:image
+});
+
+localStorage.setItem("products",JSON.stringify(products));
+
+alert("Product Added Successfully!");
+
+showAdminProducts();
+
+}
+
+function showAdminProducts(){
+
+let products=JSON.parse(localStorage.getItem("products"))||[];
+
+let output="";
+
+products.forEach((item,index)=>{
+
+output+=`
+<div class="product">
+<img src="${item.image}">
+<h3>${item.name}</h3>
+<p>₹${item.price}</p>
+<button onclick="deleteProduct(${index})">Delete</button>
+</div>
+`;
+
+});
+
+let box=document.getElementById("adminProducts");
+
+if(box){
+box.innerHTML=output;
+}
+
+}
+
+function deleteProduct(index){
+
+let products=JSON.parse(localStorage.getItem("products"))||[];
+
+products.splice(index,1);
+
+localStorage.setItem("products",JSON.stringify(products));
+
+showAdminProducts();
+
+}
+
+showAdminProducts();
