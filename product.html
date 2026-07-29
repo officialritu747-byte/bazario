@@ -1,44 +1,95 @@
 <!DOCTYPE html>
-<html><input
-    type="text"
-    id="search"
-    placeholder="Search Products..."
-    onkeyup="searchProducts()">
+<html lang="en">
 <head>
-<title>Product Details</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products - Bazario</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<h1>Wireless Headphones</h1>
+<header>
+<div class="logo">🛒 BAZARIO</div>
 
-<a href="product.html">
-  <img src="https://picsum.photos/200" alt="Wireless Headphones">
-</a>
+<nav>
+<a href="index.html">Home</a>
+<a href="products.html">Products</a>
+<a href="cart.html">Cart</a>
+<a href="login.html">Login</a>
+<a href="signup.html">Sign Up</a>
+</nav>
+</header>
 
-<h2>$49.99</h2>
+<section class="search-section">
+<input type="text" id="searchInput" placeholder="Search Products...">
+</section>
 
-<p>High quality wireless headphones with deep bass and long battery life.</p>
+<section class="products" id="products">
 
-<button>Buy Now</button>
+<div class="product">
+<img src="https://picsum.photos/250?1">
+<h3>Wireless Headphones</h3>
+<p>₹1499</p>
+<button onclick="addToCart('Wireless Headphones',1499)">Add To Cart</button>
+</div>
+
+<div class="product">
+<img src="https://picsum.photos/250?2">
+<h3>Smart Watch</h3>
+<p>₹2499</p>
+<button onclick="addToCart('Smart Watch',2499)">Add To Cart</button>
+</div>
+
+<div class="product">
+<img src="https://picsum.photos/250?3">
+<h3>Sports Shoes</h3>
+<p>₹1999</p>
+<button onclick="addToCart('Sports Shoes',1999)">Add To Cart</button>
+</div>
+
+<div class="product">
+<img src="https://picsum.photos/250?4">
+<h3>Bluetooth Speaker</h3>
+<p>₹999</p>
+<button onclick="addToCart('Bluetooth Speaker',999)">Add To Cart</button>
+</div>
+
+<div class="product">
+<img src="https://picsum.photos/250?5">
+<h3>Laptop Backpack</h3>
+<p>₹799</p>
+<button onclick="addToCart('Laptop Backpack',799)">Add To Cart</button>
+</div>
+
+<div class="product">
+<img src="https://picsum.photos/250?6">
+<h3>Gaming Mouse</h3>
+<p>₹699</p>
+<button onclick="addToCart('Gaming Mouse',699)">Add To Cart</button>
+</div>
+
+<div class="product">
+<img src="https://picsum.photos/250?7">
+<h3>Power Bank</h3>
+<p>₹1299</p>
+<button onclick="addToCart('Power Bank',1299)">Add To Cart</button>
+</div>
+
+<div class="product">
+<img src="https://picsum.photos/250?8">
+<h3>Bluetooth Earbuds</h3>
+<p>₹1799</p>
+<button onclick="addToCart('Bluetooth Earbuds',1799)">Add To Cart</button>
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 Bazario | All Rights Reserved</p>
+</footer>
+
 <script src="script.js"></script>
+
 </body>
 </html>
-<button onclick="addToCart('${product.name}', ${product.price})">
-    Add to Cart
-</button><button onclick="addToWishlist('${product.name}', ${product.price}, '${product.image}')">
-    ❤️ Wishlist
-</button>
-<p>
-⭐ ⭐ ⭐ ⭐ ⭐
-</p>
-
-<select onchange="rateProduct('${product.name}', this.value)">
-    <option value="">Rate</option>
-    <option value="1">1 Star</option>
-    <option value="2">2 Stars</option>
-    <option value="3">3 Stars</option>
-    <option value="4">4 Stars</option>
-    <option value="5">5 Stars</option>
-</select>
-<p>Rating: ${JSON.parse(localStorage.getItem("ratings") || "{}")[product.name] || "No Rating"} ⭐</p>
