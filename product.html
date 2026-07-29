@@ -4,89 +4,89 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Products - Bazario</title>
+
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
+<header class="header">
+
 <div class="logo">🛒 BAZARIO</div>
 
 <nav>
 <a href="index.html">Home</a>
 <a href="products.html">Products</a>
+<a href="wishlist.html">Wishlist</a>
 <a href="cart.html">Cart</a>
-<a href="login.html">Login</a>
-<a href="signup.html">Sign Up</a>
+<a href="profile.html">Profile</a>
 </nav>
+
 </header>
 
+<section class="hero">
+<h1>Our Products</h1>
+<p>Choose your favorite products</p>
+</section>
+
 <section class="search-section">
-<input type="text" id="searchInput" placeholder="Search Products...">
+<input
+type="text"
+id="searchInput"
+placeholder="Search Products..."
+onkeyup="searchProducts()">
 </section>
 
 <section class="products" id="products">
 
 <div class="product">
-<img src="https://picsum.photos/250?1">
+<img src="https://picsum.photos/200?1">
 <h3>Wireless Headphones</h3>
 <p>₹1499</p>
-<button onclick="addToCart('Wireless Headphones',1499)">Add To Cart</button>
+<button onclick="addToCart('Wireless Headphones',1499)">
+Add to Cart
+</button>
 </div>
 
 <div class="product">
-<img src="https://picsum.photos/250?2">
+<img src="https://picsum.photos/200?2">
 <h3>Smart Watch</h3>
 <p>₹2499</p>
-<button onclick="addToCart('Smart Watch',2499)">Add To Cart</button>
+<button onclick="addToCart('Smart Watch',2499)">
+Add to Cart
+</button>
 </div>
 
 <div class="product">
-<img src="https://picsum.photos/250?3">
+<img src="https://picsum.photos/200?3">
 <h3>Sports Shoes</h3>
 <p>₹1999</p>
-<button onclick="addToCart('Sports Shoes',1999)">Add To Cart</button>
+<button onclick="addToCart('Sports Shoes',1999)">
+Add to Cart
+</button>
 </div>
 
 <div class="product">
-<img src="https://picsum.photos/250?4">
+<img src="https://picsum.photos/200?4">
 <h3>Bluetooth Speaker</h3>
 <p>₹999</p>
-<button onclick="addToCart('Bluetooth Speaker',999)">Add To Cart</button>
-</div>
-
-<div class="product">
-<img src="https://picsum.photos/250?5">
-<h3>Laptop Backpack</h3>
-<p>₹799</p>
-<button onclick="addToCart('Laptop Backpack',799)">Add To Cart</button>
-</div>
-
-<div class="product">
-<img src="https://picsum.photos/250?6">
-<h3>Gaming Mouse</h3>
-<p>₹699</p>
-<button onclick="addToCart('Gaming Mouse',699)">Add To Cart</button>
-</div>
-
-<div class="product">
-<img src="https://picsum.photos/250?7">
-<h3>Power Bank</h3>
-<p>₹1299</p>
-<button onclick="addToCart('Power Bank',1299)">Add To Cart</button>
-</div>
-
-<div class="product">
-<img src="https://picsum.photos/250?8">
-<h3>Bluetooth Earbuds</h3>
-<p>₹1799</p>
-<button onclick="addToCart('Bluetooth Earbuds',1799)">Add To Cart</button>
+<button onclick="addToCart('Bluetooth Speaker',999)">
+Add to Cart
+</button>
 </div>
 
 </section>
 
 <footer>
-<p>© 2026 Bazario | All Rights Reserved</p>
+
+<h3>BAZARIO</h3>
+
+<p>Your One-Stop Shopping Store</p>
+
+<p>📧 support@bazario.com</p>
+
+<p>©2026 Bazario</p>
+
 </footer>
 
 <script src="script.js"></script>
