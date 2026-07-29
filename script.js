@@ -351,3 +351,69 @@ loadCart();
 // Auto Load Cart
 
 loadCart();
+// Add To Wishlist
+function addToWishlist(name, price) {
+
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+wishlist.push({
+name:name,
+price:price
+});
+
+localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+alert("Added to Wishlist ❤️");
+
+}
+
+// Load Wishlist
+function loadWishlist(){
+
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+let output = "";
+
+wishlist.forEach(function(item){
+
+output += `
+<div class="product">
+<img src="https://picsum.photos/200?random=${item.name}">
+<h3>${item.name}</h3>
+<p>₹${item.price}</p>
+
+<button onclick="addToCart('${item.name}',${item.price})">
+Add to Cart
+</button>
+
+<button onclick="removeWishlist('${item.name}')">
+Remove
+</button>
+
+</div>
+`;
+
+});
+
+let box = document.getElementById("wishlistItems");
+
+if(box){
+box.innerHTML = output;
+}
+
+}
+
+// Remove Wishlist
+function removeWishlist(name){
+
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+wishlist = wishlist.filter(item => item.name !== name);
+
+localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+loadWishlist();
+
+}
+
+loadWishlist();
