@@ -83,3 +83,46 @@ function checkout() {
 
 // Auto Load Cart
 window.onload = loadCart;
+function loadCart() {
+    const cartItems = document.getElementById("cartItems");
+
+    if (!cartItems) return;
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let total = 0;
+
+    cartItems.innerHTML = "";
+
+    cart.forEach((item, index) => {
+        total += item.price;
+
+        cartItems.innerHTML += `
+        <div class="product">
+            <h3>${item.name}</h3>
+            <p>₹${item.price}</p>
+            <button onclick="removeItem(${index})">Remove</button>
+        </div>`;
+    });
+
+    document.getElementById("totalPrice").innerText = "Total: ₹" + total;
+}
+
+function removeItem(index) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.splice(index, 1);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    loadCart();
+}
+
+function checkout() {
+    alert("🎉 Order Placed Successfully!");
+
+    localStorage.removeItem("cart");
+
+    loadCart();
+}
+
+window.onload = loadCart;
