@@ -342,3 +342,18 @@ nav a:hover{
     border-radius:8px;
     cursor:pointer;
 }
+footer{
+    background:#222;
+    color:#fff;
+    text-align:center;
+    padding:30px 20px;
+    margin-top:40px;
+}
+
+.footer-content h2{
+    margin-bottom:10px;
+}
+
+.footer-content p{
+    margin:8px 0;
+}
