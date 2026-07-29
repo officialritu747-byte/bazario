@@ -1,39 +1,50 @@
 <!DOCTYPE html>
-<html>if (localStorage.getItem("loggedIn") !== "true") {
-    alert("Please login first!");
-    window.location.href = "login.html";
-}
+<html lang="en">
 <head>
-  <title>Checkout - Bazario</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout - Bazario</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<h1 style="text-align:center;">Checkout</h1>
+<header>
+<div class="logo">🛒 BAZARIO</div>
 
-<form style="max-width:350px;margin:30px auto;">
-  <input type="text" placeholder="Full Name" required><br><br>
-  <input type="text" placeholder="Address" required><br><br>
-  <input type="tel" placeholder="Mobile Number" required><br><br>
+<nav>
+<a href="index.html">Home</a>
+<a href="products.html">Products</a>
+<a href="cart.html">Cart</a>
+<a href="login.html">Login</a>
+</nav>
+</header>
 
-<a href="success.html">
-  <button type="button">Place Order</button>
-</a>
-  </a>
-</form>
+<div class="login-box">
+
+<h2>Checkout</h2>
+
+<input type="text" id="fullname" placeholder="Full Name">
+
+<input type="text" id="address" placeholder="Delivery Address">
+
+<input type="tel" id="phone" placeholder="Phone Number">
+
+<select id="payment">
+<option value="">Select Payment Method</option>
+<option>Cash on Delivery</option>
+<option>UPI</option>
+<option>Credit Card</option>
+<option>Debit Card</option>
+</select>
+
+<br><br>
+
+<button onclick="placeOrder()">Place Order</button>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
-<h2>Checkout</h2>
-
-<form onsubmit="placeOrder(event)">
-    <input type="text" id="name" placeholder="Full Name" required><br><br>
-
-    <input type="text" id="address" placeholder="Address" required><br><br>
-
-    <input type="text" id="phone" placeholder="Phone Number" required><br><br>
-
-    <button type="submit">Place Order</button>
-</form>
-
-<script src="script.js"></script>
