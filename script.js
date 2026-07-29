@@ -1,4 +1,7 @@
-let cart = [];<span id="cart-count">0</span>
+let cart = [];<span id="cart-count">0</span><div class="cart">
+    <h2>Shopping Cart</h2>
+    <ul id="cart-items"></ul>
+</div>
 function editProduct(index) {
     let products = JSON.parse(localStorage.getItem("products")) || [];
 
@@ -325,3 +328,14 @@ buttons.forEach((button, index) => {
     alert(products[index].name + " added to cart!");
   });
 });
+const cartItems = document.getElementById("cart-items");
+
+function displayCart() {
+  cartItems.innerHTML = "";
+
+  cart.forEach((item) => {
+    cartItems.innerHTML += `
+      <li>${item.name} - ₹${item.price}</li>
+    `;
+  });
+}
