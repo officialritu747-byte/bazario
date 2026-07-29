@@ -183,3 +183,19 @@ localStorage.removeItem("cart");
 window.location.href="index.html";
 
 }
+function sendMessage(){
+
+let name=document.getElementById("contactName").value;
+let email=document.getElementById("contactEmail").value;
+let message=document.getElementById("message").value;
+
+if(name===""||email===""||message===""){
+alert("Please fill all fields");
+return;
+}
+
+alert("Message Sent Successfully!");
+
+window.location.reload();
+
+}
