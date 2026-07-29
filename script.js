@@ -164,3 +164,22 @@ alert("Account Created Successfully!");
 window.location.href="login.html";
 
 }
+function placeOrder(){
+
+let fullname=document.getElementById("fullname").value;
+let address=document.getElementById("address").value;
+let phone=document.getElementById("phone").value;
+let payment=document.getElementById("payment").value;
+
+if(fullname===""||address===""||phone===""||payment===""){
+alert("Please fill all details");
+return;
+}
+
+alert("🎉 Order Placed Successfully!");
+
+localStorage.removeItem("cart");
+
+window.location.href="index.html";
+
+}
