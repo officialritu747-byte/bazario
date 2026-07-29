@@ -306,3 +306,21 @@ font-size:16px;
 .product-card button:hover{
 background:#131921;
 }
+.search-section{
+text-align:center;
+padding:20px;
+}
+
+.search-section input{
+width:80%;
+max-width:500px;
+padding:12px;
+border:2px solid #ff9900;
+border-radius:8px;
+font-size:16px;
+outline:none;
+}
+
+.search-section input:focus{
+border-color:#131921;
+}
