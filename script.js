@@ -417,3 +417,23 @@ loadWishlist();
 }
 
 loadWishlist();
+function loginUser(){
+
+let email=document.getElementById("loginEmail").value;
+let password=document.getElementById("loginPassword").value;
+
+let user=JSON.parse(localStorage.getItem("user"));
+
+if(!user){
+alert("No account found!");
+return;
+}
+
+if(email===user.email && password===user.password){
+alert("Login Successful!");
+window.location.href="index.html";
+}else{
+alert("Invalid Email or Password");
+}
+
+}
