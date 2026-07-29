@@ -275,3 +275,36 @@ if (document.getElementById("orders")) {
 
     document.getElementById("orders").innerHTML = output;
 }
+const products = [
+  {
+    id: 1,
+    name: "Wireless Headphones",
+    price: 1499,
+    image: "images/headphone.jpg"
+  },
+  {
+    id: 2,
+    name: "Smart Watch",
+    price: 2499,
+    image: "images/watch.jpg"
+  },
+  {
+    id: 3,
+    name: "Sports Shoes",
+    price: 1999,
+    image: "images/shoes.jpg"
+  }
+];
+
+const productContainer = document.getElementById("product-list");
+
+products.forEach(product => {
+  productContainer.innerHTML += `
+    <div class="product-card">
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>₹${product.price}</p>
+      <button>Add to Cart</button>
+    </div>
+  `;
+});
