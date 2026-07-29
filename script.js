@@ -283,3 +283,71 @@ function searchProducts() {
     }
   }
 }
+// Load Cart
+
+function loadCart() {
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let output = "";
+
+let total = 0;
+
+cart.forEach(function(item){
+
+output += `
+<div class="product">
+<img src="https://picsum.photos/200?random=${item.name}">
+<h3>${item.name}</h3>
+<p>₹${item.price}</p>
+<button onclick="removeFromCart('${item.name}')">
+Remove
+</button>
+</div>
+`;
+
+total += item.price;
+
+});
+
+let cartItems = document.getElementById("cartItems");
+
+if(cartItems){
+
+cartItems.innerHTML = output;
+
+document.getElementById("total").innerText = total;
+
+}
+
+}
+
+// Remove Product
+
+function removeFromCart(name){
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+cart = cart.filter(item => item.name !== name);
+
+localStorage.setItem("cart", JSON.stringify(cart));
+
+loadCart();
+
+}
+
+// Checkout
+
+function checkout(){
+
+alert("Order Placed Successfully 🎉");
+
+localStorage.removeItem("cart");
+
+loadCart();
+
+}
+
+// Auto Load Cart
+
+loadCart();
