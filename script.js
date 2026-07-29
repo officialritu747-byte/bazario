@@ -117,7 +117,14 @@ function addProduct() {
         price: document.getElementById("productPrice").value,
         image: document.getElementById("productImage").value
     };
-
+buttons.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    cart.push(products[index]);
+    updateCartCount();
+    displayCart();
+    alert(products[index].name + " added to cart!");
+  });
+});
     products.push(product);
 
     localStorage.setItem("products", JSON.stringify(products));
