@@ -267,40 +267,4 @@ Mega Sale 50% OFF
 
 
 
-.categories button:hover{
-    background:#ff9800;
-    color:white;
-}
-
-function addToCart(name, price) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  cart.push({
-    name: name,
-    price: price
-  });
-
-let products = JSON.parse(localStorage.getItem("products")) || [];
-
-let output = "";
-
-products.forEach(product => {
-  output += `
-    <div class="product">
-      <img src="${product.image}" alt="${product.name}">
-      <h3>${product.name}</h3>
-      <p>$${product.price}</p>
-      <button onclick="addToCart('${product.name}', ${product.price})">
-        Add to Cart
-      </button>
-    </div>
-  `;
-});
-
-document.getElementById("products").innerHTML = output;
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-
-  alert(name + " added to cart!");
-}
-
+html 
