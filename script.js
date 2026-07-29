@@ -481,3 +481,54 @@ checkoutBtn.addEventListener("click", () => {
 .category-card h3{
     margin-top:15px;
 }
+.featured-products{
+    padding:60px 20px;
+    background:#f8f8f8;
+}
+
+.featured-products h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.product-card{
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    transition:.3s;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+}
+
+.product-card img{
+    width:100%;
+    height:180px;
+    object-fit:contain;
+}
+
+.price{
+    color:#ff6600;
+    font-size:22px;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+.product-card button{
+    width:100%;
+    padding:12px;
+    background:#ff6600;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+      }
