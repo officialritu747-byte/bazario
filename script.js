@@ -299,7 +299,9 @@ let products=JSON.parse(localStorage.getItem("products"))||[];
 products.splice(index,1);
 
 localStorage.setItem("products",JSON.stringify(products));
-
+showAdminProducts();
+}
+window.onload = loadProducts;
 
 window.onload=loadProducts;
 // Product Search
