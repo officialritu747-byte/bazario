@@ -612,3 +612,25 @@ async function loadProducts() {
 }
 
 loadProducts();
+async function addProduct() {
+  const name = document.getElementById("productName").value;
+  const price = document.getElementById("productPrice").value;
+  const image = document.getElementById("productImage").value;
+  const category = document.getElementById("productCategory").value;
+
+  await addDoc(collection(db, "products"), {
+    name,
+    price,
+    image,
+    category
+  });
+
+  alert("Product Added Successfully!");
+
+  document.getElementById("productName").value = "";
+  document.getElementById("productPrice").value = "";
+  document.getElementById("productImage").value = "";
+  document.getElementById("productCategory").value = "";
+
+  loadFirebaseProducts();
+}
