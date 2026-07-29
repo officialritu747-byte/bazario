@@ -308,3 +308,20 @@ products.forEach(product => {
     </div>
   `;
 });
+let cart = [];
+
+const cartCount = document.getElementById("cart-count");
+
+function updateCartCount() {
+  cartCount.textContent = cart.length;
+}
+
+const buttons = document.querySelectorAll(".product-card button");
+
+buttons.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    cart.push(products[index]);
+    updateCartCount();
+    alert(products[index].name + " added to cart!");
+  });
+});
