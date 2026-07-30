@@ -124,3 +124,30 @@ function updateStock(productId, quantity) {
 }updateStock("P001", 3);
 
 checkLowStock();
+function addNewProduct() {
+
+    const name = document.getElementById("productName").value;
+    const price = Number(document.getElementById("productPrice").value);
+    const stock = Number(document.getElementById("productStock").value);
+
+    if (!name || !price || stock < 0) {
+        alert("Please fill all fields correctly");
+        return;
+    }
+
+    const product = {
+        id: "P" + Date.now(),
+        name: name,
+        category: "General",
+        price: price,
+        stock: stock
+    };
+
+    sellerProducts.push(product);
+
+    showProducts();
+
+    document.getElementById("productName").value = "";
+    document.getElementById("productPrice").value = "";
+    document.getElementById("productStock").value = "";
+}
