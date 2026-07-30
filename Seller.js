@@ -28,3 +28,21 @@ const testSeller = new Seller(
 );
 
 console.log(testSeller);
+let sellerProducts = [];
+
+function addProduct(product) {
+    sellerProducts.push(product);
+
+    console.log("Product Added Successfully");
+
+    console.log(sellerProducts);
+}
+const rice = {
+    id: "P001",
+    name: "Basmati Rice",
+    category: "Groceries",
+    price: 599,
+    stock: 50
+};
+
+addProduct(rice);
