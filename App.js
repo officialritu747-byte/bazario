@@ -1,3 +1,8 @@
+import { getAuth, createUserWithEmailAndPassword }
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+import { app } from "./firebase-config.js";
+const auth = getAuth(app);
 import "./products.js";
 
 import "./cart.js";
