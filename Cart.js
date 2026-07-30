@@ -38,3 +38,28 @@ const CartEngine = {
 };
 
 CartEngine.load();
+class CartItem {
+    constructor(
+        productId,
+        productName,
+        price,
+        quantity,
+        image
+    ) {
+        this.productId = productId;
+        this.productName = productName;
+        this.price = price;
+        this.quantity = quantity;
+        this.image = image;
+        this.total = price * quantity;
+    }
+}
+const testCart = new CartItem(
+    "P001",
+    "Basmati Rice 5kg",
+    599,
+    2,
+    "images/rice.jpg"
+);
+
+console.log(testCart);
