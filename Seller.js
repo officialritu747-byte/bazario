@@ -151,3 +151,31 @@ function addNewProduct() {
     document.getElementById("productPrice").value = "";
     document.getElementById("productStock").value = "";
 }
+function searchProduct() {
+
+    const keyword = document
+        .getElementById("searchProduct")
+        .value
+        .toLowerCase();
+
+    const result = sellerProducts.filter(product =>
+        product.name.toLowerCase().includes(keyword)
+    );
+
+    let html = "";
+
+    result.forEach(product => {
+
+        html += `
+        <div>
+            <h3>${product.name}</h3>
+            <p>Price: ₹${product.price}</p>
+            <p>Stock: ${product.stock}</p>
+            <hr>
+        </div>
+        `;
+
+    });
+
+    document.getElementById("productList").innerHTML = html;
+}
