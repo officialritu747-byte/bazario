@@ -69,3 +69,29 @@ function showProducts() {
     document.getElementById("productList").innerHTML = html;
 
 }
+function deleteProduct(productId) {
+
+    sellerProducts = sellerProducts.filter(product => product.id !== productId);
+
+    showProducts();
+
+    console.log("Product Deleted");
+
+}function editProduct(productId, newPrice, newStock) {
+
+    const product = sellerProducts.find(p => p.id === productId);
+
+    if (product) {
+
+        product.price = newPrice;
+        product.stock = newStock;
+
+        showProducts();
+
+        console.log("Product Updated");
+    }
+
+}editProduct("P001", 549, 100);
+
+// Delete test ke liye baad me use karna
+// deleteProduct("P001");
