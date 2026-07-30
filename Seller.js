@@ -95,3 +95,32 @@ function deleteProduct(productId) {
 
 // Delete test ke liye baad me use karna
 // deleteProduct("P001");
+function updateStock(productId, quantity) {
+
+    const product = sellerProducts.find(p => p.id === productId);
+
+    if (product) {
+
+        product.stock = quantity;
+
+        console.log("Stock Updated");
+
+        showProducts();
+
+    } else {
+
+        console.log("Product Not Found");
+
+    }
+
+}function checkLowStock() {
+
+    const lowStock = sellerProducts.filter(product => product.stock <= 5);
+
+    console.log("Low Stock Products");
+
+    console.log(lowStock);
+
+}updateStock("P001", 3);
+
+checkLowStock();
