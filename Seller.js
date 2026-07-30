@@ -46,3 +46,26 @@ const rice = {
 };
 
 addProduct(rice);
+function showProducts() {
+
+    document.getElementById("totalProducts").innerText =
+        sellerProducts.length;
+
+    let html = "";
+
+    sellerProducts.forEach(product => {
+
+        html += `
+        <div>
+            <h3>${product.name}</h3>
+            <p>₹${product.price}</p>
+            <p>Stock : ${product.stock}</p>
+            <hr>
+        </div>
+        `;
+
+    });
+
+    document.getElementById("productList").innerHTML = html;
+
+}
