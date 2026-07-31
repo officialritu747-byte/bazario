@@ -63,3 +63,24 @@ const testCart = new CartItem(
 );
 
 console.log(testCart);
+function removeFromCart(index) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.splice(index, 1);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    loadCart();
+}cartHTML += `
+<div class="cart-item">
+    <h3>${item.name}</h3>
+    <p>₹${item.price}</p>
+    <p>Qty: ${item.quantity}</p>
+
+    <button onclick="removeFromCart(${index})">
+        Remove
+    </button>
+</div>
+`;cart.forEach((item, index) => {
+    // Yahi HTML banega
+});
