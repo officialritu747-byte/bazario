@@ -27,3 +27,22 @@ const rider = new Delivery(
 );
 
 console.log(rider);
+function updateLocation(lat, lng) {
+    rider.location = {
+        latitude: lat,
+        longitude: lng
+    };
+
+    console.log("Location Updated", rider.location);
+}
+
+function estimateDelivery(minutes) {
+    console.log(
+        "Estimated Delivery Time:",
+        minutes + " minutes"
+    );
+}
+
+updateLocation(28.6139, 77.2090);
+
+estimateDelivery(20);
