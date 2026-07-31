@@ -1004,7 +1004,16 @@ async function loadProducts() {
   const snapshot = await getDocs(collection(db, "products"));
   snapshot.forEach((doc) => {
     console.log(doc.data());
-  });
+  });const product = doc.data();
+
+document.getElementById("products").innerHTML += `
+<div class="product">
+    <img src="${product.image}" width="120">
+    <h3>${product.name}</h3>
+    <p>₹${product.price}</p>
+    <button>Add to Cart</button>
+</div>
+`;
 }console.log("Firebase Products Loaded Successfully");
 
 loadProducts();
