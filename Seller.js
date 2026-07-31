@@ -306,3 +306,174 @@ function showSalesReport() {
 }
 
 showSalesReport();
+// ===============================
+// Product CRUD - Part 1
+// Create Product
+// ===============================
+
+function createProduct(
+    name,
+    price,
+    category,
+    image,
+    stock,
+    description
+) {
+
+    const seller = JSON.parse(localStorage.getItem("currentUser"));
+
+    if (!seller) {
+        alert("Please login as Seller");
+        return;
+    }
+
+    let products =
+        JSON.parse(localStorage.getItem("sellerProducts")) || [];
+
+    const product = {
+        id: Date.now(),
+        sellerId: seller.id,
+        name: name,
+        price: Number(price),
+        category: category,
+        image: image,
+        stock: Number(stock),
+        description: description,
+        status: "Active",
+        createdAt: new Date().toLocaleString()
+    };
+
+    products.push(product);
+
+    localStorage.setItem(
+        "sellerProducts",
+        JSON.stringify(products)
+    );
+
+    alert("Product Added Successfully");
+
+    return product;
+}// ===============================
+// Product CRUD - Part 2
+// Edit Product
+// ===============================
+
+function editProduct(
+    productId,
+    newName,
+    newPrice,
+    newCategory,
+    newStock,
+    newDescription
+) {
+
+    let products =
+        JSON.parse(localStorage.getItem("sellerProducts")) || [];
+
+    const index = products.findIndex(
+        product => product.id === productId
+    );
+
+    if (index === -1) {
+        alert("Product Not Found");
+        return false;
+    }
+
+    products[index].name = newName;
+    products[index].price = Number(newPrice);
+    products[index].category = newCategory;
+    products[index].stock = Number(newStock);
+    products[index].description = newDescription;
+
+    localStorage.setItem(
+        "sellerProducts",
+        JSON.stringify(products)
+    );
+
+    alert("Product Updated Successfully");
+
+    return true;
+}// ===============================
+// Product CRUD - Part 3
+// Delete & Status
+// ===============================
+
+function deleteProduct(productId) {
+
+    let products =
+        JSON.parse(localStorage.getItem("sellerProducts")) || [];
+
+    products = products.filter(
+        product => product.id !== productId
+    );
+
+    localStorage.setItem(
+        "sellerProducts",
+        JSON.stringify(products)
+    );
+
+    alert("Product Deleted Successfully");
+
+    return true;
+}
+
+function changeProductStatus(productId, status) {
+
+    let products =
+        JSON.parse(localStorage.getItem("sellerProducts")) || [];
+
+    const index = products.findIndex(
+        product => product.id === productId
+    );
+
+    if (index === -1) {
+        return false;
+    }
+
+    products[index].status = status;
+
+    localStorage.setItem(
+        "sellerProducts",
+        JSON.stringify(products)
+    );
+
+    return true;
+}// ===============================
+// Product CRUD - Part 4
+// Search & Filter
+// ===============================
+
+function searchSellerProducts(keyword) {
+
+    const products =
+        JSON.parse(localStorage.getItem("sellerProducts")) || [];
+
+    return products.filter(product =>
+        product.name.toLowerCase().includes(keyword.toLowerCase())
+    );
+}
+
+function filterProductsByCategory(category) {
+
+    const products =
+        JSON.parse(localStorage.getItem("sellerProducts")) || [];
+
+    return products.filter(product =>
+        product.category === category
+    );
+}
+
+function getLowStockProducts(limit = 5) {
+
+    const products =
+        JSON.parse(localStorage.getItem("sellerProducts")) || [];
+
+    return products.filter(product =>
+        product.stock <= limit
+    );
+}
+
+function getSellerProductList() {
+
+    return JSON.parse(localStorage.getItem("sellerProducts")) || [];
+}
