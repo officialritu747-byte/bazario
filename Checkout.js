@@ -8,7 +8,14 @@ function placeOrder() {
         alert("Please fill all details");
         return;
     }
-
+const order = {
+  customerName: name,
+  phone: phone,
+  address: address,
+  items: JSON.parse(localStorage.getItem("cart")) || [],
+  status: "Pending",
+  createdAt: new Date().toISOString()
+};
     localStorage.removeItem("cart");
 
     alert("Order Placed Successfully!");
