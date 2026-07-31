@@ -1005,7 +1005,7 @@ async function loadProducts() {
   snapshot.forEach((doc) => {
     console.log(doc.data());
   });
-}
+}console.log("Firebase Products Loaded Successfully");
 
 loadProducts();
 async function addProduct() {
