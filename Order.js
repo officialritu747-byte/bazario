@@ -27,3 +27,44 @@ const testOrder = new Order(
 );
 
 console.log(testOrder);
+function updateOrderStatus(orderId, status) {
+
+    if (testOrder.orderId === orderId) {
+
+        testOrder.status = status;
+
+        console.log("Order Status Updated:", testOrder);
+
+    }
+
+}
+
+function cancelOrder(orderId) {
+
+    if (testOrder.orderId === orderId) {
+
+        testOrder.status = "Cancelled";
+
+        console.log("Order Cancelled");
+
+    }
+
+}
+
+function trackOrder(orderId) {
+
+    if (testOrder.orderId === orderId) {
+
+        console.log(
+            "Tracking:",
+            testOrder.status,
+            testOrder.createdAt
+        );
+
+    }
+
+}updateOrderStatus("ORD001", "Shipped");
+
+trackOrder("ORD001");
+
+cancelOrder("ORD001");
