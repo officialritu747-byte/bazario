@@ -1273,3 +1273,7 @@ function getWishlist(customerId) {
 
     return customer ? customer.wishlist : [];
 }loadProducts();
+function markDelivered(orderId) {
+    alert("Order " + orderId + " Delivered Successfully!");
+    console.log("Delivered:", orderId);
+}
