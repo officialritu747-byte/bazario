@@ -6,7 +6,36 @@
 <title>Bazario Admin Panel</title>
 <link rel="stylesheet" href="style.css">
 </head>
+function loadOrders() {
 
+    db.collection("orders")
+    .orderBy("createdAt", "desc")
+    .get()
+    .then((snapshot) => {
+
+        let html = "";
+
+        snapshot.forEach((doc) => {
+
+            const order = doc.data();
+
+            html += `
+            <div class="card">
+                <h3>${order.customerName}</h3>
+                <p>📞 ${order.phone}</p>
+                <p>📍 ${order.address}</p>
+                <p>Status: ${order.status}</p>
+            </div>
+            `;
+        });
+
+        document.getElementById("ordersList").innerHTML = html;
+
+    });
+
+}
+
+loadOrders();
 <body>
 
 <header class="header">
