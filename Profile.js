@@ -36,3 +36,34 @@ function saveProfile() {
     localStorage.setItem(
         "currentUser",
         JSON.stringify(currentUser
+function saveProfile() {
+
+    const user = {
+        name: document.getElementById("profileName").value,
+        email: document.getElementById("profileEmail").value,
+        phone: document.getElementById("profilePhone").value,
+        address: document.getElementById("profileAddress").value
+    };
+
+    localStorage.setItem("currentUser", JSON.stringify(user));
+
+    alert("Profile Saved Successfully");
+}
+
+window.onload = function () {
+
+    const user =
+        JSON.parse(localStorage.getItem("currentUser")) || {};
+
+    document.getElementById("profileName").value =
+        user.name || "";
+
+    document.getElementById("profileEmail").value =
+        user.email || "";
+
+    document.getElementById("profilePhone").value =
+        user.phone || "";
+
+    document.getElementById("profileAddress").value =
+        user.address || "";
+};
