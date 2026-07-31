@@ -6,7 +6,341 @@ let orders = [];
 let users = [];
 let sellers = [];
 let wishlist = [];
-import { db } from "./firebase-config.js";
+// ===============================
+// Seller Engine
+// ===============================
+
+function createSeller(name, shopName, phone, address) {
+    const seller = {
+        id: Date.now(),
+        name,
+        shopName,
+        phone,
+        address,
+        products: [],
+        status: "active"
+    };
+
+    sellers.push(seller);
+    return seller;
+}
+
+function getSeller(id) {
+    return sellers.find(seller => seller.id === id);
+}
+
+function addProductToSeller(sellerId, product) {
+    const seller = getSeller(sellerId);
+
+    if (!seller) {
+        return false;
+    }
+
+    seller.products.push(product);
+    products.push(product);
+
+    return true;
+}// ===============================
+// Customer Engine
+// ===============================
+
+function createCustomer(name, email) {
+    const customer = {
+        id: Date.now(),
+        name,
+        email,
+        cart: [],
+        wishlist: [],
+        orders: []
+    };
+
+    users.push(customer);
+    return customer;
+}
+
+function addToCart(customerId, productId) {
+    const customer = users.find(u => u.id === customerId);
+    const product = products.find(p => p.id === productId);
+
+    if (!customer || !product) {
+        return false;
+    }
+
+    customer.cart.push(product);
+    return true;
+}
+
+function removeFromCart(customerId, productId) {
+    const customer = users.find(u => u.id === customerId);
+
+    if (!customer) {
+        return false;
+    }
+
+    customer.cart = customer.cart.filter(
+        item => item.id !== productId
+    );
+
+    return true;
+}
+
+function getCart(customerId) {
+    const customer = users.find(u => u.id === customerId);
+
+    if (!customer) {
+        return [];
+    }
+
+    return customer.cart;
+}// ===============================
+// Order Engine
+// ===============================
+
+function placeOrder(customerId) {
+    const customer = users.find(u => u.id === customerId);
+
+    if (!customer || customer.cart.length === 0) {
+        return false;
+    }
+
+    const order = {
+        id: Date.now(),
+        customerId: customer.id,
+        items: [...customer.cart],
+        total: customer.cart.reduce(
+            (sum, item) => sum + Number(item.price || 0),
+            0
+        ),
+        status: "Pending",
+        createdAt: new Date()
+    };
+
+    orders.push(order);
+    customer.orders.push(order);
+    customer.cart = [];
+
+    return order;
+}
+
+function getOrders(customerId) {
+    const customer = users.find(u => u.id === customerId);
+
+    if (!customer) {
+        return [];
+    }
+
+    return customer.orders;
+}
+
+function updateOrderStatus(orderId, status) {
+    const order = orders.find(o => o.id === orderId);
+
+    if (!order) {
+        return false;
+    }
+
+    order.status = status;
+   // ===============================
+// Delivery Engine
+// ===============================
+
+let deliveryPartners = [];
+
+function addDeliveryPartner(name, phone) {
+    const partner = {
+        id: Date.now(),
+        name,
+        phone,
+        status: "Available",
+        currentOrder: null
+    };
+
+    deliveryPartners.push(partner);
+    return partner;
+}
+
+function assignDelivery(orderId, partnerId) {
+    const order = orders.find(o => o.id === orderId);
+    const partner = deliveryPartners.find(p => p.id === partnerId);
+
+    if (!order || !partner) {
+        return false;
+    }
+
+    order.deliveryPartner = partner.id;
+    order.status = "Out for Delivery";
+
+    partner.currentOrder = order.id;
+    partner.status = "Busy";
+
+    return true;
+}
+
+function completeDelivery(orderId) {
+    const order = orders.find(o => o.id === orderId);
+
+    if (!order) {
+        return false;
+    }
+
+    order.status = "Delivered";
+
+    const partner = deliveryPartners.find(
+        p => p.id === order.deliveryPartner
+    );
+
+    if (partner) {
+        partner.status = "Available";
+        partner.currentOrder = null;
+    }
+
+    return true;
+} return true;
+}// ===============================
+// Payment Engine
+// ===============================
+
+let payments = [];
+
+function createPayment(orderId, method) {
+    const order = orders.find(o => o.id === orderId);
+
+    if (!order) {
+        return false;
+    }
+
+    const payment = {
+        id: Date.now(),
+        orderId: order.id,
+        amount: order.total,
+        method: method,
+        status: "Pending",
+        createdAt: new Date()
+    };
+
+    payments.push(payment);
+    return payment;
+}
+
+function completePayment(paymentId) {
+    const payment = payments.find(p => p.id === paymentId);
+
+    if (!payment) {
+        return false;
+    }
+
+    payment.status = "Success";
+
+    const order = orders.find(o => o.id === payment.orderId);
+
+    if (order) {
+        order.status = "Paid";
+    }
+
+    return true;
+}
+
+function getPayment(paymentId) {
+    return payments.find(p => p.id === paymentId);
+}
+impor// ===============================
+// Notification Engine
+// ===============================
+
+let notifications = [];
+
+function sendNotification(userId, title, message) {
+    const notification = {
+        id: Date.now(),
+        userId,
+        title,
+        message,
+        isRead: false,
+        createdAt: new Date()
+    };
+
+    notifications.push(notification);
+    return notification;
+}
+
+function getNotifications(userId) {
+    return notifications.filter(
+        n => n.userId === userId
+    );
+}
+
+function markNotificationAsRead(notificationId) {
+    const notification = notifications.find(
+        n => n.id === notificationId
+    );
+
+    if (!notification) {
+        return false;
+    }
+
+    notification.isRead = true;
+    return true;
+}// ===============================
+// Admin Control Engine
+// ===============================
+
+const admin = {
+    products,
+    users,
+    sellers,
+    orders,
+    payments
+};
+
+function getAllProducts() {
+    return admin.products;
+}
+
+function getAllUsers() {
+    return admin.users;
+}
+
+function getAllSellers() {
+    return admin.sellers;
+}
+
+function getAllOrders() {
+    return admin.orders;
+}
+
+function deleteProduct(productId) {
+    const index = products.findIndex(p => p.id === productId);
+
+    if (index === -1) {
+        return false;
+    }
+
+    products.splice(index, 1);
+    return true;
+}
+
+function deleteUser(userId) {
+    const index = users.findIndex(u => u.id === userId);
+
+    if (index === -1) {
+        return false;
+    }
+
+    users.splice(index, 1);
+    return true;
+}
+
+function blockSeller(sellerId) {
+    const seller = sellers.find(s => s.id === sellerId);
+
+    if (!seller) {
+        return false;
+    }
+
+    seller.status = "Blocked";
+    return true;
+}
+t { db } from "./firebase-config.js";
 import {
   collection,
   getDocs
