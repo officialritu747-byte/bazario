@@ -336,7 +336,50 @@ function blockSeller(sellerId) {
     if (!seller) {
         return false;
     }
+// ===============================
+// Product Engine
+// ===============================
 
+function createProduct(name, price, image, category, sellerId) {
+    const product = {
+        id: Date.now(),
+        name,
+        price,
+        image,
+        category,
+        sellerId,
+        rating: 0,
+        stock: 100,
+        status: "Active"
+    };
+
+    products.push(product);
+    return product;
+}
+
+function getProduct(productId) {
+    return products.find(product => product.id === productId);
+}
+
+function updateProduct(productId, data) {
+    const product = getProduct(productId);
+
+    if (!product) return false;
+
+    Object.assign(product, data);
+    return true;
+}
+
+function deleteProductById(productId) {
+    const index = products.findIndex(
+        product => product.id === productId
+    );
+
+    if (index === -1) return false;
+
+    products.splice(index, 1);
+    return true;
+}
     seller.status = "Blocked";
     return true;
 }
