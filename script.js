@@ -683,7 +683,7 @@ let box=document.getElementById("adminProducts");
 
 if(box){
 box.innerHTML=output;
-}
+}loadProducts();
 
 }
 
