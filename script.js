@@ -1,3 +1,11 @@
+// Global Data
+
+let products = [];
+let cart = [];
+let orders = [];
+let users = [];
+let sellers = [];
+let wishlist = [];
 import { db } from "./firebase-config.js";
 import {
   collection,
