@@ -1,4 +1,9 @@
-// Global Data
+// import { db } from "./firebase-config.js";
+
+import {
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";Global Data
 
 let products = [];
 let cart = [];
@@ -965,27 +970,33 @@ import { getFirestore, collection, getDocs } from "https://www.gstatic.com/fireb
 const db = getFirestore(app);
 
 async function loadFirebaseProducts() {
-  const productsBox = document.getElementById("products");
-  if (!productsBox) return;
+    const productsBox = document.getElementById("products");
 
-  productsBox.innerHTML = "";
+    if (!productsBox) return;
 
-  const querySnapshot = await getDocs(collection(db, "products"));
+    productsBox.innerHTML = "";
 
-  querySnapshot.forEach((doc) => {
-    const item = doc.data();
+    const querySnapshot = await getDocs(collection(db, "products"));
 
-    productsBox.innerHTML += `
-      <div class="product">
-        <img src="${item.image}" alt="${item.name}">
-        <h3>${item.name}</h3>
-        <p>₹${item.price}</p>
-        <button onclick="addToCart('${item.name}', ${item.price})">
-          Add to Cart
-        </button>
-      </div>
-    `;
-  });
+    querySnapshot.forEach((doc) => {
+        const item = doc.data();
+
+        productsBox.innerHTML += `
+        <div class="product">
+            <img src="${item.image}" alt="${item.name}">
+            <h3>${item.name}</h3>
+            <p>₹${item.price}</p>
+
+            <button onclick="addToCart('${item.name}', ${item.price})">
+                Add to Cart
+            </button>
+
+            <button onclick="addToWishlist('${item.name}', ${item.price})">
+                ❤️ Wishlist
+            </button>
+        </div>
+        `;
+    });
 }
 
 loadFirebaseProducts();
