@@ -41,3 +41,13 @@ export async function testFirebase() {
 }
 
 testFirebase();
+db.collection("orders")
+  .add(order)
+  .then(() => {
+      localStorage.removeItem("cart");
+      window.location.href = "success.html";
+  })
+  .catch((error) => {
+      alert("Order Save Failed");
+      console.log(error);
+  });
