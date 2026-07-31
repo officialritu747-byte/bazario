@@ -81,3 +81,33 @@ function removeUser(userId) {
 
     return true;
 }
+function loadOrders() {
+
+    db.collection("orders")
+    .orderBy("createdAt", "desc")
+    .get()
+    .then((snapshot) => {
+
+        let html = "";
+
+        snapshot.forEach((doc) => {
+
+            const order = doc.data();
+
+            html += `
+            <div class="card">
+                <h3>${order.customerName}</h3>
+                <p>📞 ${order.phone}</p>
+                <p>📍 ${order.address}</p>
+                <p>Status: ${order.status}</p>
+            </div>
+            `;
+        });
+
+        document.getElementById("ordersList").innerHTML = html;
+
+    });
+
+}
+
+loadOrders();
