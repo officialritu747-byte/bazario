@@ -1277,3 +1277,4 @@ function markDelivered(orderId) {
     alert("Order " + orderId + " Delivered Successfully!");
     console.log("Delivered:", orderId);
 }
+let allProducts = [];
