@@ -1022,7 +1022,7 @@ window.addProduct = addProduct;
   });
 
   alert("Product Added Successfully!");
-
+console.log("Product uploaded to Firebase successfully.");
   document.getElementById("productName").value = "";
   document.getElementById("productPrice").value = "";
   document.getElementById("productImage").value = "";
