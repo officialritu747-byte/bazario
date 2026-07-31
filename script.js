@@ -1045,4 +1045,211 @@ function sortProducts() {
   });
 
   products.forEach(product => container.appendChild(product));
+}// ===============================
+// Search Engine
+// ===============================
+// ===============================
+// Wishlist Engine
+// ===============================
+
+function addToWishlist(customerId, productId) {
+    const customer = users.find(u => u.id === customerId);
+    const product = products.find(p => p.id === productId);
+
+    if (!customer || !product) {
+        return false;
+    }
+
+    if (!customer.wishlist.find(p => p.id === productId)) {
+        customer.wishlist.push(product);
+    }
+
+    return true;
+}
+
+function removeFromWishlist(customerId, productId) {
+    const customer = users.find(u => u.id === customerId);
+
+    if (!customer) {
+        return false;
+    }
+
+    customer.wishlist = customer.wishlist.filter(
+        p => p.id !== productId
+    );
+
+    return true;
+}
+
+function getWishlist(customerId) {
+    const customer = users.find(u => u.id === customerId);
+
+    return customer ? customer.wishlist : [];
+}// ===============================
+// Wishlist Engine
+// ===============================
+
+function addToWishlist(customerId, productId) {
+    const customer = users.find(u => u.id === customerId);
+    const product = products.find(p => p.id === productId);
+
+    if (!customer || !product) {
+        return false;
+    }
+
+    if (!customer.wishlist.find(p => p.id === productId)) {
+        customer.wishlist.push(product);
+    }
+
+    return true;
+}
+
+function removeFromWishlist(customerId, productId) {
+    const customer = users.find(u => u.id === customerId);
+
+    if (!customer) {
+        return false;
+    }
+
+    customer.wishlist = customer.wishlist.filter(
+        p => p.id !== productId
+    );
+
+    return true;
+}
+
+function getWishlist(customerId) {
+    const customer = users.find(u => u.id === customerId);
+
+    return customer ? customer.wishlist : [];
+}
+function searchProducts(keyword) {
+    return products.filter(product =>
+        product.name.toLowerCase().includes(keyword.toLowerCase())
+    );
+}
+
+function filterByCategory(category) {
+    return products.filter(product =>
+        product.category === category
+    );
+}
+
+function sortByPriceLowToHigh() {
+    return [...products].sort((a, b) => a.price - b.price);
+}
+
+function sortByPriceHighToLow() {
+    return [...products].sort((a, b) => b.price - a.price);
+}// ===============================
+// Wishlist Engine
+// ===============================
+
+function addToWishlist(customerId, productId) {
+    const customer = users.find(u => u.id === customerId);
+    const product = products.find(p => p.id === productId);
+
+    if (!customer || !product) {
+        return false;
+    }
+
+    if (!customer.wishlist.find(p => p.id === productId)) {
+        customer.wishlist.push(product);
+    }
+
+    return true;
+}
+
+function removeFromWishlist(customerId, productId) {
+    const customer = users.find(u => u.id === customerId);
+
+    if (!customer) {
+        return false;
+    }
+
+    customer.wishlist = customer.wishlist.filter(
+        p => p.id !== productId
+    );
+
+    return true;
+}
+
+function getWishlist(customerId) {
+    const customer = users.find(u => u.id === customerId);
+
+    return customer ? customer.wishlist : [];
+}// ===============================
+// Wishlist Engine
+// ===============================
+
+function addToWishlist(customerId, productId) {
+    const customer = users.find(u => u.id === customerId);
+    const product = products.find(p => p.id === productId);
+
+    if (!customer || !product) {
+        return false;
+    }
+
+    if (!customer.wishlist.find(p => p.id === productId)) {
+        customer.wishlist.push(product);
+    }
+
+    return true;
+}
+
+function removeFromWishlist(customerId, productId) {
+    const customer = users.find(u => u.id === customerId);
+
+    if (!customer) {
+        return false;
+    }
+
+    customer.wishlist = customer.wishlist.filter(
+        p => p.id !== productId
+    );
+
+    return true;
+}
+
+function getWishlist(customerId) {
+    const customer = users.find(u => u.id === customerId);
+
+    return customer ? customer.wishlist : [];
+}// ===============================
+// Wishlist Engine
+// ===============================
+
+function addToWishlist(customerId, productId) {
+    const customer = users.find(u => u.id === customerId);
+    const product = products.find(p => p.id === productId);
+
+    if (!customer || !product) {
+        return false;
+    }
+
+    if (!customer.wishlist.find(p => p.id === productId)) {
+        customer.wishlist.push(product);
+    }
+
+    return true;
+}
+
+function removeFromWishlist(customerId, productId) {
+    const customer = users.find(u => u.id === customerId);
+
+    if (!customer) {
+        return false;
+    }
+
+    customer.wishlist = customer.wishlist.filter(
+        p => p.id !== productId
+    );
+
+    return true;
+}
+
+function getWishlist(customerId) {
+    const customer = users.find(u => u.id === customerId);
+
+    return customer ? customer.wishlist : [];
 }
