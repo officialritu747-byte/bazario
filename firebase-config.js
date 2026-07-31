@@ -15,3 +15,9 @@ const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
 export const auth = getAuth(app);
+export async function testFirebase() {
+    console.log("Firebase Connected Successfully");
+    return true;
+}
+
+testFirebase();
