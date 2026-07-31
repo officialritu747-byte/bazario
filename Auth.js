@@ -111,3 +111,59 @@ function requireSeller() {
         window.location.href = "index.html";
     }
 }
+// ===============================
+// Authentication Part 3
+// Password Reset + Profile
+// ===============================
+
+// Reset Password
+function resetPassword(email, newPassword) {
+
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const index = users.findIndex(user => user.email === email);
+
+    if (index === -1) {
+        alert("User not found");
+        return false;
+    }
+
+    users[index].password = newPassword;
+
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Password Updated");
+    return true;
+}
+
+// Update Profile
+function updateProfile(name, phone, address) {
+
+    const user = getCurrentUser();
+
+    if (!user) return false;
+
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const index = users.findIndex(u => u.id === user.id);
+
+    if (index === -1) return false;
+
+    users[index].name = name;
+    users[index].phone = phone;
+    users[index].address = address;
+
+    localStorage.setItem("users", JSON.stringify(users));
+    localStorage.setItem("currentUser", JSON.stringify(users[index]));
+
+    currentUser = users[index];
+
+    alert("Profile Updated");
+
+    return true;
+}
+
+// Auto Login
+window.addEventListener("load", () => {
+    currentUser = getCurrentUser();
+});
