@@ -477,3 +477,26 @@ function getSellerProductList() {
 
     return JSON.parse(localStorage.getItem("sellerProducts")) || [];
 }
+function addProduct() {
+
+    const product = {
+        name: document.getElementById("pname").value,
+        price: document.getElementById("pprice").value,
+        image: document.getElementById("pimage").value,
+        createdAt: new Date().toISOString()
+    };
+
+    db.collection("products")
+      .add(product)
+      .then(() => {
+          alert("Product Uploaded Successfully");
+
+          document.getElementById("pname").value = "";
+          document.getElementById("pprice").value = "";
+          document.getElementById("pimage").value = "";
+      })
+      .catch((error) => {
+          console.log(error);
+          alert("Upload Failed");
+      });
+}
