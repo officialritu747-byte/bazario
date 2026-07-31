@@ -58,3 +58,56 @@ function loginUser(email, password) {
 
     return true;
 }
+// ===============================
+// Authentication Part 2
+// ===============================
+
+// Logout
+function logoutUser() {
+    localStorage.removeItem("currentUser");
+    currentUser = null;
+    window.location.href = "login.html";
+}
+
+// Current User
+function getCurrentUser() {
+    return JSON.parse(localStorage.getItem("currentUser"));
+}
+
+// Login Check
+function isLoggedIn() {
+    return getCurrentUser() !== null;
+}
+
+// Role Check
+function hasRole(role) {
+    const user = getCurrentUser();
+
+    if (!user) return false;
+
+    return user.role === role;
+}
+
+// Protect Page
+function requireLogin() {
+    if (!isLoggedIn()) {
+        alert("Please Login First");
+        window.location.href = "login.html";
+    }
+}
+
+// Admin Only
+function requireAdmin() {
+    if (!hasRole("admin")) {
+        alert("Access Denied");
+        window.location.href = "index.html";
+    }
+}
+
+// Seller Only
+function requireSeller() {
+    if (!hasRole("seller")) {
+        alert("Seller Login Required");
+        window.location.href = "index.html";
+    }
+}
