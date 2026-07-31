@@ -1013,7 +1013,7 @@ async function addProduct() {
   const price = document.getElementById("productPrice").value;
   const image = document.getElementById("productImage").value;
   const category = document.getElementById("productCategory").value;
-
+window.addProduct = addProduct;
   await addDoc(collection(db, "products"), {
     name,
     price,
