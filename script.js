@@ -1272,4 +1272,4 @@ function getWishlist(customerId) {
     const customer = users.find(u => u.id === customerId);
 
     return customer ? customer.wishlist : [];
-}
+}loadProducts();
