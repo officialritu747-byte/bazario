@@ -24,3 +24,17 @@ const testPayment = new Payment(
 );
 
 console.log(testPayment);
+function processPayment(payment) {
+
+    if (payment.method === "Cash on Delivery") {
+        payment.status = "Pending";
+    } else {
+        payment.status = "Paid";
+    }
+
+    console.log("Payment Status:", payment.status);
+
+    return payment;
+}
+
+processPayment(testPayment);
