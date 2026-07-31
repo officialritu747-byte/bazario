@@ -179,3 +179,130 @@ function searchProduct() {
 
     document.getElementById("productList").innerHTML = html;
 }
+// ===============================
+// Seller Dashboard Statistics
+// ===============================
+
+function getDashboardStats() {
+
+    const totalProducts = sellerProducts.length;
+
+    let totalStock = 0;
+    let totalValue = 0;
+
+    sellerProducts.forEach(product => {
+        totalStock += product.stock;
+        totalValue += product.price * product.stock;
+    });
+
+    return {
+        totalProducts,
+        totalStock,
+        totalValue
+    };
+}
+
+function showDashboardStats() {
+
+    const stats = getDashboardStats();
+
+    console.log("Total Products:", stats.totalProducts);
+    console.log("Total Stock:", stats.totalStock);
+    console.log("Inventory Value:", stats.totalValue);
+}
+
+showDashboardStats();
+// ===============================
+// Order Management
+// ===============================
+
+let sellerOrders = [];
+
+function createOrder(customer, productName, qty, price) {
+
+    const order = {
+        id: Date.now(),
+        customer,
+        productName,
+        qty,
+        price,
+        total: qty * price,
+        status: "Pending"
+    };
+
+    sellerOrders.push(order);
+
+    localStorage.setItem(
+        "sellerOrders",
+        JSON.stringify(sellerOrders)
+    );
+}
+
+function loadOrders() {
+    sellerOrders =
+        JSON.parse(localStorage.getItem("sellerOrders")) || [];
+
+    return sellerOrders;
+}
+
+function updateOrderStatus(orderId, status) {
+
+    sellerOrders = loadOrders();
+
+    sellerOrders.forEach(order => {
+        if (order.id === orderId) {
+            order.status = status;
+        }
+    });
+
+    localStorage.setItem(
+        "sellerOrders",
+        JSON.stringify(sellerOrders)
+    );
+}// ===============================
+// Sales Report
+// ===============================
+
+function getSalesReport() {
+
+    sellerOrders = loadOrders();
+
+    let totalOrders = sellerOrders.length;
+    let completedOrders = 0;
+    let pendingOrders = 0;
+    let revenue = 0;
+
+    sellerOrders.forEach(order => {
+
+        if (order.status === "Completed") {
+            completedOrders++;
+            revenue += order.total;
+        }
+
+        if (order.status === "Pending") {
+            pendingOrders++;
+        }
+
+    });
+
+    return {
+        totalOrders,
+        completedOrders,
+        pendingOrders,
+        revenue
+    };
+}
+
+function showSalesReport() {
+
+    const report = getSalesReport();
+
+    console.log("===== SALES REPORT =====");
+    console.log("Total Orders :", report.totalOrders);
+    console.log("Completed :", report.completedOrders);
+    console.log("Pending :", report.pendingOrders);
+    console.log("Revenue : ₹" + report.revenue);
+
+}
+
+showSalesReport();
