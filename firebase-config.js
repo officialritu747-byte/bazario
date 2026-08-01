@@ -51,3 +51,8 @@ db.collection("orders")
       alert("Order Save Failed");
       console.log(error);
   });
+// Firestore
+const db = firebase.firestore();
+
+// Storage
+const storage = firebase.storage();
