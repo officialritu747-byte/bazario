@@ -54,6 +54,18 @@ document.getElementById("productForm").addEventListener("submit", function(e){
     document.getElementById("productForm").reset();
 
     alert("Product Added Successfully");
+});db.collection("products").add({
+    name: name,
+    price: Number(price),
+    stock: Number(stock),
+    description: description,
+    createdAt: new Date()
+})
+.then(() => {
+    console.log("Product Saved");
+})
+.catch((error) => {
+    console.log(error);
 });
 
 updateDashboard();
