@@ -1,41 +1,81 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Seller Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bazario Seller Dashboard</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+<div class="seller-dashboard">
+
+<div class="sidebar">
+<h2>🛒 BAZARIO</h2>
+
+<a href="#">🏠 Dashboard</a>
+<a href="#">📦 Products</a>
+<a href="#">🛍 Orders</a>
+<a href="#">💰 Earnings</a>
+<a href="#">👤 Profile</a>
+<a href="#">🚪 Logout</a>
+</div>
+
+<div class="main-content">
 
 <h1>Seller Dashboard</h1>
 
-<h2>Total Products</h2>
+<div class="cards">
+
+<div class="card">
+<h3>Total Products</h3>
 <p id="totalProducts">0</p>
+</div>
 
-<button onclick="showProducts()">View Products</button>
+<div class="card">
+<h3>Total Orders</h3>
+<p id="totalOrders">0</p>
+</div>
 
-<div id="productList"></div>
-<script type="module" src="Seller.js"></script>
-<h2>Add New Product</h2>
-<br><br>
+<div class="card">
+<h3>Total Sales</h3>
+<p id="totalSales">₹0</p>
+</div>
 
-<input type="text" id="searchProduct" placeholder="Search Product">
+</div>
 
-<button onclick="searchProduct()">Search</button>
+<h2>Add Product</h2>
 
-<hr>
-<input type="text" id="productName" placeholder="Product Name"><br><br>
+<form id="productForm">
 
-<input type="number" id="productPrice" placeholder="Price"><br><br>
+<input type="text" id="name" placeholder="Product Name" required><br><br>
 
-<input type="number" id="productStock" placeholder="Stock"><br><br>
+<input type="number" id="price" placeholder="Price" required><br><br>
+
+<input type="number" id="stock" placeholder="Stock" required><br><br>
+
+<textarea id="description" placeholder="Description"></textarea><br><br>
+
 <input type="file" id="image"><br><br>
 
-<img id="preview" width="150" style="display:none; margin-top:10px; border-radius:10px;"><img id="preview" width="150" style="display:none; margin-top:10px; border-radius:10px;">
-     width="150"
-     style="display:none; border-radius:10px;">
-<br><br>
-<button onclick="addNewProduct()">Add Product</button>
+<img id="preview" width="150" style="display:none;"><br><br>
 
-<hr>
+<button type="submit">Upload Product</button>
+
+</form>
+
+<h2>Your Products</h2>
+
+<div id="productList"></div>
+
+</div>
+
+</div>
+
+<script type="module" src="Seller.js"></script>
+
 </body>
 </html>
-
